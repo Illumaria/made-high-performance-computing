@@ -36,6 +36,25 @@ cd matmul
 bash timings.sh
 ```
 
+Результаты выполнения на локальном компьютере:
+```
+Flag: -g
+N: 500; CLASSIC: 938.615 ms; STRASSEN: 816.057 ms
+N: 512; CLASSIC: 1008.89 ms; STRASSEN: 841.869 ms
+N: 1000; CLASSIC: 7460.85 ms; STRASSEN: 5727.64 ms
+N: 1024; CLASSIC: 8021.36 ms; STRASSEN: 5990.61 ms
+N: 2000; CLASSIC: 60122.9 ms; STRASSEN: 40420.1 ms
+N: 2048; CLASSIC: 64387 ms; STRASSEN: 42395.1 ms
+Flag: -O3
+N: 500; CLASSIC: 47.9491 ms; STRASSEN: 97.8429 ms
+N: 512; CLASSIC: 52.2986 ms; STRASSEN: 94.1776 ms
+N: 1000; CLASSIC: 521.152 ms; STRASSEN: 660.323 ms
+N: 1024; CLASSIC: 408.412 ms; STRASSEN: 687.791 ms
+N: 2000; CLASSIC: 6717.68 ms; STRASSEN: 4609.64 ms
+N: 2048; CLASSIC: 7250.45 ms; STRASSEN: 4811.24 ms
+Done!
+```
+
 - [X] **4. Базовые bash-скрипты (25\%).**
 ```bash
 cd bash_scripts
