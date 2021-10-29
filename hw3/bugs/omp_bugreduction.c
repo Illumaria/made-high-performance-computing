@@ -2,42 +2,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-float dotprod(float * a, float * b, size_t N)
-{
+float dotprod(float *a, float *b, size_t N) {
     int i, tid;
     float sum;
 
-    tid = omp_get_thread_num();
-
-#pragma omp parallel for reduction(+:sum)
-    for (i = 0; i < N; ++i)
+#pragma omp parallel shared(a, b, sum) private(i, tid)
     {
-        sum += a[i] * b[i];
-        printf("tid = %d i = %d\n", tid, i);
+        tid = omp_get_thread_num();
+
+#pragma omp for reduction(+:sum)
+        for (i = 0; i < N; ++i) {
+            sum += a[i] * b[i];
+            printf("tid = %d i = %d\n", tid, i);
+        }
     }
 
     return sum;
 }
 
-int main (int argc, char *argv[])
-{
+int main (int argc, char *argv[]) {
     const size_t N = 100;
-    int i;
-    float sum;
     float a[N], b[N];
 
-
-    for (i = 0; i < N; ++i)
-    {
-        a[i] = b[i] = (double)i;
+    for (int i = 0; i < N; ++i) {
+        a[i] = b[i] = (float)i;
     }
 
-    sum = 0.0;
+    float sum = dotprod(a, b, N);
 
-#pragma omp parallel shared(sum)
-    sum = dotprod(a, b, N);
-
-    printf("Sum = %f\n",sum);
+    printf("Sum = %f\n", sum);
 
     return 0;
 }
