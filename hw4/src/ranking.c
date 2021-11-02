@@ -78,7 +78,7 @@ void pagerank(double *matrix, double *pagerank_vector, int N,
         // X = M * R
         matrix_vector_mult(fixed_matrix, prev_pagerank_vector, pagerank_vector, N);
 
-        // R' = d * X + (d - 1) / N
+        // R' = d * X + (1 - d) / N
         for (j = 0; j < N; ++j) {
             pagerank_vector[j] = damping_factor * pagerank_vector[j] + (1 - damping_factor) / N;
         }
