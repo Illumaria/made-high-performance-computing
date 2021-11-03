@@ -17,7 +17,7 @@ GOSPER_SIZE = 38
 
 
 def random_grid(m: int, n: int, fraction_alive: float = 0.2) -> np.array:
-    """Return a grid of NxN random values"""
+    """Return a grid of [m x n] random values"""
     return np.random.choice([ON, OFF], m * n, p=[fraction_alive, 1 - fraction_alive]).reshape(m, n)
 
 
