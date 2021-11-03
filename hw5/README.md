@@ -78,7 +78,10 @@ Done!
 Для проверки выполнить (можно указать желаемое количество процессов):
 ```bash
 chmod +x mpi_game_of_life.py
-mpirun -n 4 ./mpi_game_of_life.py --grid-size 100 --frame-rate 25 --fraction-alive 0.2 --gosper
+# random grid
+mpirun -n 4 ./mpi_game_of_life.py --grid-size 100 --frame-rate 25 --fraction-alive 0.2
+# gosper glider gun
+mpirun -n 4 ./mpi_game_of_life.py --grid-size 100 --frame-rate 25 --gosper
 ```
 
 - [ ] «Война и Мир» (10%). С помощью работы на нескольких процессах (MPI) найдите топ-10 встречающихся слов в романе «Война и Мир» Л.Н. Толстого.
